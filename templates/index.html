@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasEncrypt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='studio.css') }}" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Caesar Cipher Studio</p>
+          <h1 id="page-title">EasEncrypt</h1>
+          <p class="hero-copy">
+            Encrypt English or Hindi messages, reverse them back to the original,
+            and see the shift process unfold letter by letter.
+          </p>
+        </div>
+        <div class="cipher-wheel" aria-hidden="true">
+          <span>A</span>
+          <span>D</span>
+          <span>&#x0915;</span>
+          <span>&#x0917;</span>
+          <span>Z</span>
+          <span>C</span>
+        </div>
+      </section>
+
+      <section class="tool-grid" aria-label="Cipher tool">
+        <div class="panel input-panel">
+          <div class="panel-header">
+            <div>
+              <span class="section-kicker">Message</span>
+              <h2>Type or Paste Text</h2>
+            </div>
+            <div class="theme-switcher" role="group" aria-label="Theme mode">
+              <label class="theme-label" for="themeSelect">Theme</label>
+              <select id="themeSelect" class="theme-select" aria-label="Choose theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="eye-care">Eye-Care</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="message">Message</label>
+          <textarea id="message" rows="7" placeholder="Enter English or Hindi text">Attack at dawn!</textarea>
+
+          <div class="typing-tools" aria-label="Hindi typing tools">
+            <label class="toggle-line" for="phoneticTyping">
+              <input id="phoneticTyping" type="checkbox" />
+              <span>Hindi phonetic typing</span>
+            </label>
+            <button class="secondary small" id="guidelinesButton" type="button">
+              Typing Guidelines
+            </button>
+          </div>
+
+          <div class="guidelines-modal" id="guidelinesModal" aria-hidden="true">
+            <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="guidelinesTitle">
+              <div class="modal-header">
+                <div>
+                  <span class="section-kicker">Desktop Typing</span>
+                  <h2 id="guidelinesTitle">Hindi Typing Guidelines</h2>
+                </div>
+                <button class="secondary small" id="closeGuidelines" type="button">Close</button>
+              </div>
+              <p>
+                Turn on Hindi phonetic typing, then type Hindi words using English letters.
+                Example: <strong>namaste</strong> becomes <strong>&#x0928;&#x092E;&#x0938;&#x094D;&#x0924;&#x0947;</strong>.
+              </p>
+              <div class="mapping-grid" aria-label="Hindi keyboard mapping examples">
+                <span>a = &#x0905;</span>
+                <span>aa = &#x0906;</span>
+                <span>i = &#x0907;</span>
+                <span>ee = &#x0908;</span>
+                <span>u = &#x0909;</span>
+                <span>oo = &#x090A;</span>
+                <span>e = &#x090F; / &#x0947;</span>
+                <span>ai = &#x0910; / &#x0948;</span>
+                <span>o = &#x0913; / &#x094B;</span>
+                <span>au = &#x0914; / &#x094C;</span>
+                <span>k = &#x0915;</span>
+                <span>kh = &#x0916;</span>
+                <span>g = &#x0917;</span>
+                <span>ch = &#x091A;</span>
+                <span>j = &#x091C;</span>
+                <span>t = &#x0924;</span>
+                <span>d = &#x0926;</span>
+                <span>n = &#x0928;</span>
+                <span>p = &#x092A;</span>
+                <span>b = &#x092C;</span>
+                <span>m = &#x092E;</span>
+                <span>y = &#x092F;</span>
+                <span>r = &#x0930;</span>
+                <span>l = &#x0932;</span>
+                <span>v/w = &#x0935;</span>
+                <span>sh = &#x0936;</span>
+                <span>s = &#x0938;</span>
+                <span>h = &#x0939;</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-grid">
+            <div>
+              <label for="language">Language</label>
+              <select id="language">
+                <option value="auto">Auto detect</option>
+                <option value="english">English only</option>
+                <option value="hindi">Hindi only</option>
+              </select>
+            </div>
+            <div>
+              <label for="shift">Shift Value</label>
+              <div class="shift-row">
+                <input id="shift" type="range" min="0" max="25" value="3" />
+                <input id="shiftNumber" type="number" min="0" max="25" value="3" />
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="primary danger" id="encryptBtn" type="button">Encrypt</button>
+            <button class="primary success" id="decryptBtn" type="button">Decrypt</button>
+            <button class="secondary" id="useResultBtn" type="button">Use Result</button>
+            <button class="secondary" id="clearBtn" type="button">Clear</button>
+          </div>
+
+          <div class="hint-strip" id="decryptHint">
+            After encrypting, press Decrypt to reverse the latest result back to the original.
+          </div>
+          <p class="error" id="errorMessage" role="alert"></p>
+        </div>
+
+        <div class="panel result-panel">
+          <div class="panel-header">
+            <div>
+              <span class="section-kicker">Output</span>
+              <h2>Result Preview</h2>
+            </div>
+            <button class="secondary small" id="copyResult" type="button">Copy Result</button>
+          </div>
+
+          <div class="comparison">
+            <article>
+              <span>Input Used</span>
+              <p id="originalText">Attack at dawn!</p>
+            </article>
+            <article>
+              <span>Output</span>
+              <p id="resultText">Dwwdfn dw gdzq!</p>
+            </article>
+          </div>
+
+          <div class="visualizer" aria-label="Letter transformation">
+            <div class="visualizer-header">
+              <h2>Letter Timeline</h2>
+              <span id="modeLabel">Encrypt shift +3</span>
+            </div>
+            <div id="visualization"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="process-panel" aria-labelledby="process-title">
+        <div class="panel-header">
+          <div>
+            <span class="section-kicker">Visual Guide</span>
+            <h2 id="process-title">Encryption and Decryption Process</h2>
+          </div>
+          <div class="tab-list" role="tablist" aria-label="Process tabs">
+            <button class="tab active" id="encryptTab" type="button" role="tab" aria-selected="true" data-process="encrypt">
+              Encryption
+            </button>
+            <button class="tab" id="decryptTab" type="button" role="tab" aria-selected="false" data-process="decrypt">
+              Decryption
+            </button>
+          </div>
+        </div>
+
+        <div class="process-content">
+          <div class="process-visual">
+            <img
+              id="processImage"
+              src="{{ url_for('static', filename='encrypt-process.svg') }}"
+              alt="Encryption process diagram"
+            />
+            <div class="image-hover-card" id="imageHoverCard">
+              Hover the diagram to inspect how letters travel through the cipher.
+            </div>
+          </div>
+          <ol id="processSteps">
+            <li>Start with the original message.</li>
+            <li>Move each supported letter forward by the selected shift.</li>
+            <li>Wrap around the alphabet when the end is reached.</li>
+            <li>Keep spaces, numbers, punctuation, and vowel signs unchanged.</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='studio.js') }}"></script>
+  </body>
+</html>

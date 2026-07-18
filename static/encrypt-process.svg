@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" role="img" aria-labelledby="title desc">
+  <title id="title">Encryption process</title>
+  <desc id="desc">A diagram showing plain text letters shifting forward into cipher text.</desc>
+  <rect width="760" height="430" rx="24" fill="#f7faff"/>
+  <rect x="38" y="42" width="684" height="346" rx="22" fill="#ffffff" stroke="#dfe7f5" stroke-width="2"/>
+  <text x="70" y="92" fill="#174eb3" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="800">Encryption: move letters forward</text>
+  <text x="70" y="126" fill="#657083" font-family="Segoe UI, Arial, sans-serif" font-size="15">Example shift +3</text>
+  <g font-family="Consolas, monospace" font-weight="800" text-anchor="middle">
+    <rect x="76" y="174" width="78" height="78" rx="16" fill="#eaf1ff"/>
+    <text x="115" y="224" fill="#2e6de6" font-size="32">A</text>
+    <path d="M171 213 H250" stroke="#d94d5c" stroke-width="8" stroke-linecap="round"/>
+    <path d="M250 213 l-18 -14 v28 z" fill="#d94d5c"/>
+    <rect x="272" y="174" width="78" height="78" rx="16" fill="#fff0f2"/>
+    <text x="311" y="224" fill="#d94d5c" font-size="32">D</text>
+    <text x="214" y="194" fill="#d94d5c" font-size="18">+3</text>
+    <rect x="412" y="174" width="78" height="78" rx="16" fill="#eaf1ff"/>
+    <text x="451" y="224" fill="#2e6de6" font-size="32">क</text>
+    <path d="M507 213 H586" stroke="#d94d5c" stroke-width="8" stroke-linecap="round"/>
+    <path d="M586 213 l-18 -14 v28 z" fill="#d94d5c"/>
+    <rect x="608" y="174" width="78" height="78" rx="16" fill="#fff0f2"/>
+    <text x="647" y="224" fill="#d94d5c" font-size="32">घ</text>
+    <text x="550" y="194" fill="#d94d5c" font-size="18">+3</text>
+  </g>
+  <g fill="#657083" font-family="Segoe UI, Arial, sans-serif" font-size="17">
+    <circle cx="98" cy="316" r="7" fill="#2e6de6"/>
+    <text x="118" y="322">Plain message goes in</text>
+    <circle cx="315" cy="316" r="7" fill="#d94d5c"/>
+    <text x="335" y="322">Letters shift forward</text>
+    <circle cx="548" cy="316" r="7" fill="#16845b"/>
+    <text x="568" y="322">Cipher message comes out</text>
+  </g>
+</svg>
