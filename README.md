@@ -1,4 +1,4 @@
-# Caesar Cipher Visualizer
+# Caesar Cipher Studio
 
 A full-stack Python project with a Flask backend and a modern HTML/CSS/JavaScript
 frontend for encrypting and decrypting text using the Caesar Cipher algorithm.
